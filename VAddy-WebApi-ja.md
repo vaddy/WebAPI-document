@@ -89,6 +89,7 @@ content-type  : application/json
     {"error_message":"xxxxxx"}
 
 - 存在しないfqdn
+- 存在しないscan_id
 - 既に処理が終わっていてキャンセルできない
 - 不測の事態によりキャンセルできない
 
@@ -155,7 +156,7 @@ content-type  : application/json
 content-type  : application/json  
 コンテンツ:
 
-    {"message":"xxxxxx"}
+    {"error_message":"xxxxxx"}
 
 - 存在しないfqdn
 - 存在しないscan_id
