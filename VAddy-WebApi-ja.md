@@ -1,7 +1,7 @@
 VAddy Web API Document
 ======================
 
-Document Version 1.0  
+Document Version 1.0.1  
 
 VAddy WebAPI仕様書です。
 本仕様では、VAddyのスキャン開始、スキャンキャンセル、スキャン結果の取得の3つを定義します。
@@ -17,11 +17,12 @@ Method : POST
     user=vaddyuser
     auth_key=123456
     fqdn=www.example.jp
+    crawl_id=30
 
+crawl_idはオプション項目です。指定がない場合は最新のクロールデータを利用して検査します。クロールIDの値は、管理画面にログインし、Proxy Crawling画面からご確認ください。
 
 auth_keyは、ユーザ毎に発行する認証キーです。VAddyログイン後のWebAPI管理画面にて取得してください。  
-管理画面のUser Idをuserパラメータに、API Auth Keyをauth_keyパラメータにセットしてください。 
-
+管理画面のUser Idをuserパラメータに、API Auth Keyをauth_keyパラメータにセットしてください。  
 
 
 ### Scan開始レスポンス
@@ -141,7 +142,10 @@ content-type  : application/json
       "timezone" : "UTC",
       "start_time" :  "2014-06-12T11:11:11+0000",
       "end_time" :  "2014-06-12T11:11:11+0000",
-      "scan_result_url" : "https://console.vaddy.net/scan_status/1/1-837b5f9f-e088-4af5-9491-67f7ce8035a4"
+      "scan_result_url" : "https://console.vaddy.net/scan_status/1/1-837b5f9f-e088-4af5-9491-67f7ce8035a4",
+      "complete" : 100,
+      "crawl_id" : 30,
+      "scan_list" : ["XSS","SQL Injection"]
     }
 
 時刻はUTCで、ISO 8601 timestamp形式。
