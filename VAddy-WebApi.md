@@ -1,7 +1,7 @@
 VAddy Web API Document
 ======================
 
-Document Version 1.0  
+Document Version 1.0.1 
 
 This specification defines "start scan", "cancel scan" and "get scan results".
 
@@ -18,7 +18,9 @@ Method : POST
     user=vaddyuser
     auth_key=123456
     fqdn=www.example.jp
+    crawl_id=30
 
+"crawl_id" is optional. If you don't specify it, VAddy uses the latest crawl data for scan. You can see the crawl ID number in the Proxy Crawling page of console page.
 
 The auth_key is WebAPI authentication key. You can create this key on VAddy management page(https://console.vaddy.net/user/webapi).  
 Set Your UserID(LoginID) of VAddy management page on user parameter.
@@ -146,7 +148,10 @@ Contents:
       "timezone" : "UTC",
       "start_time" :  "2014-06-12T11:11:11+0000",
       "end_time" :  "2014-06-12T11:11:11+0000",
-      "scan_result_url" : "https://console.vaddy.net/scan_status/1/1-837b5f9f-e088-4af5-9491-67f7ce8035a4"
+      "scan_result_url" : "https://console.vaddy.net/scan_status/1/1-837b5f9f-e088-4af5-9491-67f7ce8035a4",
+      "complete" : 100,
+      "crawl_id" : 30,
+      "scan_list" : ["XSS","SQL Injection"]
     }
 
 Timestamp is UTC and ISO 8601 timestamp format.
