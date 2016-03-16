@@ -1,4 +1,4 @@
-VAddy Web API Document
+VAddy Web API Scan Document
 ======================
 
 Document Version 1.0.1 
