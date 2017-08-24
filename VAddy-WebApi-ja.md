@@ -164,3 +164,46 @@ content-type  : application/json
 - 存在しないfqdn
 - 存在しないscan_id
 
+
+----------------------------------------------------------------------------------
+
+
+## Scan実行中の確認
+
+VAddyでは、同一FQDNに対する検査の同時実行は行えません。  
+現在、検査が実行中かどうか把握するリクエスト。
+
+### 検査実行チェックリクエスト
+https://api.vaddy.net/v1/scan/runcheck  
+Method : GET  
+
+    user=vaddyuser
+    auth_key=123456
+    fqdn=www.example.jp
+
+
+### レスポンス
+
+#### スキャンが実行中でない場合
+この場合は、スキャン開始リクエスト送信すると、検査開始されます。  
+
+ステータスコード : 200  
+content-type  : application/json  
+コンテンツ:
+
+    {"running_process": 0}
+
+検査実行中のプロセスが0件という意味です。  
+
+
+#### スキャン中
+スキャン実行中の場合のレスポンス  
+この場合は、スキャン開始リクエスト送信してもエラーが返ってきます。  
+running_process : 0になるまで一定間隔で確認をしてください。  
+
+ステータスコード : 200  
+content-type  : application/json  
+コンテンツ:
+
+    {"running_process": 1}
+
