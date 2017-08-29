@@ -171,3 +171,46 @@ Contents:
 - This fqdn does not exist.
 - This scan_id does not exist.
 
+
+----------------------------------------------------------------------------------
+
+
+## check running scan process
+
+VAddy doesn't allow to scan same FQDN simultaneously.  
+This API provide to check running scan process.  
+
+
+### Request of checking scan process
+https://api.vaddy.net/v1/scan/runcheck  
+Method : GET  
+
+    user=vaddyuser
+    auth_key=123456
+    fqdn=www.example.jp
+
+
+### Response
+
+#### No scan process running
+
+Status Code : 200  
+content-type  : application/json  
+Contents:
+
+    {"running_process": 0}
+
+running_process 0 means no scan process running.  
+You can start scan.  
+
+
+#### scan process running
+Status Code : 200  
+content-type  : application/json  
+Contents:
+
+    {"running_process": 1}
+
+A scan process is running, so you can't start scan now and need to wait.  
+Call this API until getting `running_process : 0` at regular intervals.
+
