@@ -1,7 +1,7 @@
 VAddy Web API Scan Document
 ======================
 
-Document Version 1.0.1  
+Document Version 2.0.0
 
 VAddy WebAPI仕様書です。
 本仕様では、VAddyのスキャン開始、スキャンキャンセル、スキャン結果の取得の3つを定義します。
@@ -10,13 +10,13 @@ VAddy WebAPI仕様書です。
 クライアント（Jenkins等)からWebAPIに送信するスキャン開始リクエスト。
 
 ### Scan開始リクエスト
-https://api.vaddy.net/v1/scan  
+https://api.vaddy.net/v2/scan  
 Method : POST  
 
     action=start
     user=vaddyuser
     auth_key=123456
-    fqdn=www.example.jp
+    project_id=6eb1f9fcbdb6a5a
     crawl_id=30
 
 crawl_idはオプション項目です。指定がない場合は最新のクロールデータを利用して検査します。クロールIDの値は、管理画面にログインし、Proxy Crawling画面からご確認ください。
@@ -24,6 +24,7 @@ crawl_idはオプション項目です。指定がない場合は最新のクロ
 auth_keyは、ユーザ毎に発行する認証キーです。VAddyログイン後のWebAPI管理画面にて取得してください。  
 管理画面のUser Idをuserパラメータに、API Auth Keyをauth_keyパラメータにセットしてください。  
 
+project_idは、検査対象サーバを管理するID。 Server画面にProjectIDとして表示されます。
 
 ### Scan開始レスポンス
 #### 成功
@@ -47,7 +48,7 @@ content-type  : application/json
     {"error_message":"xxxxxx"}
 
 
-- 存在しないfqdn
+- 存在しないproject_id
 - 前回のスキャンが終了しておらず開始できない
 - クロールデータが1件も存在しない
 
@@ -57,14 +58,14 @@ content-type  : application/json
 クライアント（Jenkins等)からWebAPIに送信するスキャンキャンセルリクエスト。
 
 ### Scanキャンセルリクエスト
-https://api.vaddy.net/v1/scan  
+https://api.vaddy.net/v2/scan  
 Method : POST  
 
     action=cancel
     user=vaddyuser
     auth_key=123456
     scan_id=xxxxxxxxxxxx
-    fqdn=www.example.jp
+    project_id=6eb1f9fcbdb6a5a
 
 scan_idは、スキャンを開始すると発行されるIDです。  
 
@@ -88,7 +89,7 @@ content-type  : application/json
 
     {"error_message":"xxxxxx"}
 
-- 存在しないfqdn
+- 存在しないproject_id
 - 存在しないscan_id
 - 既に処理が終わっていてキャンセルできない
 - 不測の事態によりキャンセルできない
@@ -102,12 +103,12 @@ content-type  : application/json
 クライアント（Jenkins等)からWebAPIに送信するスキャン結果を取得するリクエスト
 
 ### Scan結果リクエスト
-https://api.vaddy.net/v1/scan/result  
+https://api.vaddy.net/v2/scan/result  
 Method : GET  
 
     user=vaddyuser
     auth_key=123456
-    fqdn=www.example.jp
+    project_id=6eb1f9fcbdb6a5a
     scan_id=xxxxxxxxxxxx
 
 
@@ -135,7 +136,7 @@ content-type  : application/json
 コンテンツ:
 
     { "status":"finish",
-      "fqdn" : "www.example.com",
+      "project_id" : "6eb1f9fcbdb6a5a"
       "scan_id" : "1-837b5f9f-e088-4af5-9491-67f7ce8035a4",
       "scan_count" : 22,
       "alert_count" : 1,
@@ -148,8 +149,8 @@ content-type  : application/json
       "scan_list" : ["XSS","SQL Injection"]
     }
 
-時刻はUTCで、ISO 8601 timestamp形式。
-
+時刻はUTCで、ISO 8601 timestamp形式。  
+alert_countは、発見された脆弱性の件数になります。
 
 #### 認証エラー
 ステータスコード : 401  Unauthorized  
@@ -161,7 +162,7 @@ content-type  : application/json
 
     {"error_message":"xxxxxx"}
 
-- 存在しないfqdn
+- 存在しないproject_id
 - 存在しないscan_id
 
 
@@ -170,16 +171,16 @@ content-type  : application/json
 
 ## Scan実行中の確認
 
-VAddyでは、同一FQDNに対する検査の同時実行は行えません。  
+VAddyでは、同一プロジェクトに対する検査の同時実行は行えません。  
 現在、検査が実行中かどうか把握するリクエスト。
 
 ### 検査実行チェックリクエスト
-https://api.vaddy.net/v1/scan/runcheck  
+https://api.vaddy.net/v2/scan/runcheck  
 Method : GET  
 
     user=vaddyuser
     auth_key=123456
-    fqdn=www.example.jp
+    project_id=6eb1f9fcbdb6a5a
 
 
 ### レスポンス
@@ -206,4 +207,3 @@ content-type  : application/json
 コンテンツ:
 
     {"running_process": 1}
-
