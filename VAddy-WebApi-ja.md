@@ -65,7 +65,6 @@ Method : POST
     user=vaddyuser
     auth_key=123456
     scan_id=xxxxxxxxxxxx
-    project_id=6eb1f9fcbdb6a5a
 
 scan_idは、スキャンを開始すると発行されるIDです。  
 
@@ -108,7 +107,6 @@ Method : GET
 
     user=vaddyuser
     auth_key=123456
-    project_id=6eb1f9fcbdb6a5a
     scan_id=xxxxxxxxxxxx
 
 

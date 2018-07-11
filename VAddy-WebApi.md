@@ -69,7 +69,6 @@ Method : POST
     user=vaddyuser
     auth_key=123456
     scan_id=xxxxxxxxxxxx
-    project_id=6eb1f9fcbdb6a5a
 
 scan_id is issued by starting the scan.
 
@@ -114,7 +113,6 @@ Method : GET
 
     user=vaddyuser
     auth_key=123456
-    project_id=6eb1f9fcbdb6a5a
     scan_id=xxxxxxxxxxxx
 
 Set scan_id which is included in the response of scan start.
