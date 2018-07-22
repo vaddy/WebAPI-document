@@ -1,7 +1,7 @@
 VAddy Web API Scan Document
 ======================
 
-Document Version 1.0.1 
+Document Version 2.0.0
 
 This specification defines "start scan", "cancel scan" and "get scan results".
 
@@ -11,20 +11,21 @@ Scan start request from client(browser, Jenkins, etc) to VAddy WebAPI server.
 
 
 ### Scan Start Request
-https://api.vaddy.net/v1/scan  
+https://api.vaddy.net/v2/scan  
 Method : POST  
 
     action=start
     user=vaddyuser
     auth_key=123456
-    fqdn=www.example.jp
+    project_id=6eb1f9fcbdb6a5a
     crawl_id=30
 
 "crawl_id" is optional. If you don't specify it, VAddy uses the latest crawl data for scan. You can see the crawl ID number in the Proxy Crawling page of console page.
 
 The auth_key is WebAPI authentication key. You can create this key on VAddy management page(https://console.vaddy.net/user/webapi).  
-Set Your UserID(LoginID) of VAddy management page on user parameter.
+Set Your UserID(LoginID) of VAddy management page on user parameter.  
 
+The project_id is grouping ID for scan target servers.  It shows on the server menu of VAddy console screen.  
 
 
 ### Scan Start Response
@@ -51,8 +52,8 @@ Contents:
 
 Examples of error message.  
 
-- This fqdn does not exist.
-- can not start scan because it has not finished previous scan. 
+- This project_id does not exist.
+- can not start scan because it has not finished previous scan.
 - no crawling data.
 
 ----------------------------------------------------------------------------------
@@ -61,14 +62,13 @@ Examples of error message.
 Scan cancel request from client(browser, Jenkins, etc) to VAddy WebAPI server.
 
 ### Scan Cancel Request
-https://api.vaddy.net/v1/scan  
+https://api.vaddy.net/v2/scan  
 Method : POST  
 
     action=cancel
     user=vaddyuser
     auth_key=123456
     scan_id=xxxxxxxxxxxx
-    fqdn=www.example.jp
 
 scan_id is issued by starting the scan.
 
@@ -94,9 +94,9 @@ Contents:
     {"error_message":"xxxxxx"}
 
 
-- This fqdn does not exist.
+- This project_id does not exist.
 - This scan_id does not exist.
-- can not cancel because the scan process has already been finished. 
+- can not cancel because the scan process has already been finished.
 
 
 ----------------------------------------------------------------------------------
@@ -108,12 +108,11 @@ Scan results request from client(browser, Jenkins, etc) to VAddy WebAPI server.
 
 
 ### Scan Result Request
-https://api.vaddy.net/v1/scan/result  
+https://api.vaddy.net/v2/scan/result  
 Method : GET  
 
     user=vaddyuser
     auth_key=123456
-    fqdn=www.example.jp
     scan_id=xxxxxxxxxxxx
 
 Set scan_id which is included in the response of scan start.
@@ -141,7 +140,7 @@ content-type  : application/json
 Contents:
 
     { "status":"finish",
-      "fqdn" : "www.example.com",
+      "project_id" : "6eb1f9fcbdb6a5a",
       "scan_id" : "1-837b5f9f-e088-4af5-9491-67f7ce8035a4",
       "scan_count" : 22,
       "alert_count" : 1,
@@ -168,7 +167,7 @@ Contents:
 
     {"error_message":"xxxxxx"}
 
-- This fqdn does not exist.
+- This project_id does not exist.
 - This scan_id does not exist.
 
 
@@ -177,17 +176,17 @@ Contents:
 
 ## check running scan process
 
-VAddy doesn't allow to scan same FQDN simultaneously.  
+VAddy doesn't allow to scan same ProjectId simultaneously.  
 This API provide to check running scan process.  
 
 
 ### Request of checking scan process
-https://api.vaddy.net/v1/scan/runcheck  
+https://api.vaddy.net/v2/scan/runcheck  
 Method : GET  
 
     user=vaddyuser
     auth_key=123456
-    fqdn=www.example.jp
+    project_id=6eb1f9fcbdb6a5a
 
 
 ### Response
@@ -213,4 +212,3 @@ Contents:
 
 A scan process is running, so you can't start scan now and need to wait.  
 Call this API until getting `running_process : 0` at regular intervals.
-
