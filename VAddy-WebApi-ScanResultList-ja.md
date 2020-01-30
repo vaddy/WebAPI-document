@@ -71,9 +71,9 @@ content-type  : application/json
     }
 
 結果は見やすくするため改行をいれています。  
-statusは、Complete, Cancel, Scanningの3つです。Completeは検査完了、Scanningは検査実行中、Cancelはキャンセルです。  
+statusは、Complete, Cancelの2つです。Completeは検査完了、Cancelはキャンセルです。  
 開始・終了時刻はUTCで、ISO 8601 timestamp形式です。  
-alert_countは脆弱性件数、scan_countは検査リクエスト数、completeは検査完了割合、scan_result_urlは検査結果詳細画面のURLになります。
+alert_countは脆弱性件数、scan_countは検査リクエスト数、completeは検査完了割合(検査の時間切れの場合に100未満になります)、scan_result_urlは検査結果詳細画面のURLになります。
 
 
 
