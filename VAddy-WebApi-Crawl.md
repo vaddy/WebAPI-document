@@ -1,7 +1,7 @@
 VAddy Web API Crawl Document
 ======================
 
-Document Version 1.0.1 
+Document Version 2.0.0
 
 This specification defines to operate crawling information.
 
@@ -9,20 +9,20 @@ This specification defines to operate crawling information.
 ## Get crawling records
 The request of fetching crawl information from client(browser, Jenkins, etc) to VAddy WebAPI server.  
 Results contains only records of Recorded status.
-Cancel or Crawling status are ignored. 
+Cancel or Crawling status are ignored.
 
 
 ### Request
-https://api.vaddy.net/v1/crawl  
+https://api.vaddy.net/v2/crawl  
 Method : GET  
 
     user=vaddyuser
     auth_key=123456
-    fqdn=www.example.jp
+    project_id=6eb1f9fcbdb6a5a
     search_label=all-crawl (optional)
     page=1 (optional)
     sort=desc (optional)
-    
+
 Parameters of page, sort, search_label are optional. Each request can fetch at most 30 records.  
 
 - page parameter: page number. Default is 1.
@@ -36,11 +36,11 @@ Set Your UserID(LoginID) of VAddy management page on the user parameter.
 
 #### Request example
 
-    https://api.vaddy.net/v1/crawl?user=vaddyuser&auth_key=123456&fqdn=www.example.com
+    https://api.vaddy.net/v2/crawl?user=vaddyuser&auth_key=123456&project_id=6eb1f9fcbdb6a5a
 
 #### Request example with search word
 
-    https://api.vaddy.net/v1/crawl?user=vaddyuser&auth_key=123456&fqdn=www.example.com&search_label=all-data
+    https://api.vaddy.net/v2/crawl?user=vaddyuser&auth_key=123456&project_id=6eb1f9fcbdb6a5a&search_label=all-data
 
 
 ### Reqponse
@@ -53,7 +53,7 @@ Contents:
      "page":1,
      "limit":30,
      "items":[
-        {"id":2, "label": "all-data", "start":"2016-03-12T11:11:11+0000", "end":"2016-03-12T12:00:00+0000"}, 
+        {"id":2, "label": "all-data", "start":"2016-03-12T11:11:11+0000", "end":"2016-03-12T12:00:00+0000"},
         {"id":1, "label": null, "start":"2016-03-12T11:11:11+0000", "end":"2016-03-12T12:00:00+0000"}
      ]
     }
@@ -90,5 +90,4 @@ Contents:
 
     {"error_message":"xxxxxx"}
 
-- This fqdn does not exist.
-
+- This project_id does not exist.

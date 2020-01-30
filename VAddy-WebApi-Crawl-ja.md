@@ -1,7 +1,7 @@
 VAddy Web API Crawl Document
 ============================
 
-Document Version 1.0.1  
+Document Version 2.0.0  
 
 VAddy WebAPI Crawl仕様書です。
 本仕様では、VAddyのクロール情報の取得を定義します。
@@ -12,16 +12,16 @@ VAddy WebAPI Crawl仕様書です。
 
 
 ### リクエスト
-https://api.vaddy.net/v1/crawl  
+https://api.vaddy.net/v2/crawl  
 Method : GET  
 
     user=vaddyuser
     auth_key=123456
-    fqdn=www.example.jp
+    project_id=6eb1f9fcbdb6a5a
     search_label=all-crawl (optional)
     page=1 (optional)
     sort=desc (optional)
-    
+
 page, sort, search_labelはオプション項目です。検索結果は1回で最大30件取得できます。  
 
 - pageはページ番号を数字で指定します。指定をしない場合はデフォルトは1です。  
@@ -31,14 +31,15 @@ page, sort, search_labelはオプション項目です。検索結果は1回で�
 auth_keyは、ユーザ毎に発行する認証キーです。VAddyログイン後のWebAPI管理画面にて取得してください。  
 管理画面のUser Idをuserパラメータに、API Auth Keyをauth_keyパラメータにセットしてください。  
 
+project_idは、検査対象サーバを管理するID。 Server画面にProjectIDとして表示されます。
 
 #### リクエスト例 (最新の30件を取得)：
 
-    https://api.vaddy.net/v1/crawl?user=vaddyuser&auth_key=123456&fqdn=www.example.com
+    https://api.vaddy.net/v2/crawl?user=vaddyuser&auth_key=123456&project_id=6eb1f9fcbdb6a5a
 
 #### リクエスト例 (検索条件追加)：
 
-    https://api.vaddy.net/v1/crawl?user=vaddyuser&auth_key=123456&fqdn=www.example.com&search_label=all-data
+    https://api.vaddy.net/v2/crawl?user=vaddyuser&auth_key=123456&project_id=6eb1f9fcbdb6a5a&search_label=all-data
 
 
 ### レスポンス
@@ -51,7 +52,7 @@ content-type  : application/json
      "page":1,
      "limit":30,
      "items":[
-        {"id":2, "label": "all-data", "start":"2016-03-12T11:11:11+0000", "end":"2016-03-12T12:00:00+0000"}, 
+        {"id":2, "label": "all-data", "start":"2016-03-12T11:11:11+0000", "end":"2016-03-12T12:00:00+0000"},
         {"id":1, "label": null, "start":"2016-03-12T11:11:11+0000", "end":"2016-03-12T12:00:00+0000"}
      ]
     }
@@ -89,6 +90,4 @@ content-type  : application/json
     {"error_message":"xxxxxx"}
 
 
-存在しないfqdnなど。
-
-
+存在しないproject_idなど。
