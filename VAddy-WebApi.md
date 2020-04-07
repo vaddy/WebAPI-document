@@ -1,7 +1,7 @@
 VAddy Web API Scan Document
 ======================
 
-Document Version 1.0.1 
+Document Version 1.0.2
 
 This specification defines "start scan", "cancel scan" and "get scan results".
 
@@ -18,6 +18,7 @@ Method : POST
     user=vaddyuser
     auth_key=123456
     fqdn=www.example.jp
+    verification_code=12345
     crawl_id=30
 
 "crawl_id" is optional. If you don't specify it, VAddy uses the latest crawl data for scan. You can see the crawl ID number in the Proxy Crawling page of console page.
@@ -52,7 +53,7 @@ Contents:
 Examples of error message.  
 
 - This fqdn does not exist.
-- can not start scan because it has not finished previous scan. 
+- can not start scan because it has not finished previous scan.
 - no crawling data.
 
 ----------------------------------------------------------------------------------
@@ -69,6 +70,7 @@ Method : POST
     auth_key=123456
     scan_id=xxxxxxxxxxxx
     fqdn=www.example.jp
+    verification_code=12345
 
 scan_id is issued by starting the scan.
 
@@ -96,7 +98,7 @@ Contents:
 
 - This fqdn does not exist.
 - This scan_id does not exist.
-- can not cancel because the scan process has already been finished. 
+- can not cancel because the scan process has already been finished.
 
 
 ----------------------------------------------------------------------------------
@@ -115,6 +117,7 @@ Method : GET
     auth_key=123456
     fqdn=www.example.jp
     scan_id=xxxxxxxxxxxx
+    verification_code=12345
 
 Set scan_id which is included in the response of scan start.
 
@@ -188,6 +191,7 @@ Method : GET
     user=vaddyuser
     auth_key=123456
     fqdn=www.example.jp
+    verification_code=12345
 
 
 ### Response
@@ -213,4 +217,3 @@ Contents:
 
 A scan process is running, so you can't start scan now and need to wait.  
 Call this API until getting `running_process : 0` at regular intervals.
-

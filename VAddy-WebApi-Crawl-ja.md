@@ -1,7 +1,7 @@
 VAddy Web API Crawl Document
 ============================
 
-Document Version 1.0.1  
+Document Version 1.0.2  
 
 VAddy WebAPI Crawl仕様書です。
 本仕様では、VAddyのクロール情報の取得を定義します。
@@ -18,10 +18,11 @@ Method : GET
     user=vaddyuser
     auth_key=123456
     fqdn=www.example.jp
+    verification_code=12345
     search_label=all-crawl (optional)
     page=1 (optional)
     sort=desc (optional)
-    
+
 page, sort, search_labelはオプション項目です。検索結果は1回で最大30件取得できます。  
 
 - pageはページ番号を数字で指定します。指定をしない場合はデフォルトは1です。  
@@ -51,7 +52,7 @@ content-type  : application/json
      "page":1,
      "limit":30,
      "items":[
-        {"id":2, "label": "all-data", "start":"2016-03-12T11:11:11+0000", "end":"2016-03-12T12:00:00+0000"}, 
+        {"id":2, "label": "all-data", "start":"2016-03-12T11:11:11+0000", "end":"2016-03-12T12:00:00+0000"},
         {"id":1, "label": null, "start":"2016-03-12T11:11:11+0000", "end":"2016-03-12T12:00:00+0000"}
      ]
     }
@@ -90,5 +91,3 @@ content-type  : application/json
 
 
 存在しないfqdnなど。
-
-

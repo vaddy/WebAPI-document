@@ -1,7 +1,7 @@
 VAddy Web API Crawl Document
 ======================
 
-Document Version 1.0.1 
+Document Version 1.0.2
 
 This specification defines to operate crawling information.
 
@@ -9,7 +9,7 @@ This specification defines to operate crawling information.
 ## Get crawling records
 The request of fetching crawl information from client(browser, Jenkins, etc) to VAddy WebAPI server.  
 Results contains only records of Recorded status.
-Cancel or Crawling status are ignored. 
+Cancel or Crawling status are ignored.
 
 
 ### Request
@@ -19,10 +19,11 @@ Method : GET
     user=vaddyuser
     auth_key=123456
     fqdn=www.example.jp
+    verification_code=12345
     search_label=all-crawl (optional)
     page=1 (optional)
     sort=desc (optional)
-    
+
 Parameters of page, sort, search_label are optional. Each request can fetch at most 30 records.  
 
 - page parameter: page number. Default is 1.
@@ -53,7 +54,7 @@ Contents:
      "page":1,
      "limit":30,
      "items":[
-        {"id":2, "label": "all-data", "start":"2016-03-12T11:11:11+0000", "end":"2016-03-12T12:00:00+0000"}, 
+        {"id":2, "label": "all-data", "start":"2016-03-12T11:11:11+0000", "end":"2016-03-12T12:00:00+0000"},
         {"id":1, "label": null, "start":"2016-03-12T11:11:11+0000", "end":"2016-03-12T12:00:00+0000"}
      ]
     }
@@ -91,4 +92,3 @@ Contents:
     {"error_message":"xxxxxx"}
 
 - This fqdn does not exist.
-
