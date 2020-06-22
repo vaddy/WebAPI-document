@@ -10,6 +10,8 @@ VAddy WebAPI クロールデータ削除の仕様書です。
 クロールIDを指定してクロールレデータを削除するAPIです。  
 本APIはVAddyのV1/V2全てのプロジェクトが対象です。
 
+クロールステータスが`Recorded`、`Cancel`のものが削除可能です。`Crawling`のものは削除できません。
+
 ### リクエスト
 https://api.vaddy.net/v2/crawl/delete  
 Method : POST  
