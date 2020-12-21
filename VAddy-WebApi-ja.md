@@ -1,7 +1,7 @@
 VAddy Web API Scan Document
 ======================
 
-Document Version 2.0.0
+Document Version 2.0.1
 
 VAddy WebAPI仕様書です。
 本仕様では、VAddyのスキャン開始、スキャンキャンセル、スキャン結果の取得の3つを定義します。
@@ -144,6 +144,7 @@ content-type  : application/json
       "scan_result_url" : "https://console.vaddy.net/scan_status/1/1-837b5f9f-e088-4af5-9491-67f7ce8035a4",
       "complete" : 100,
       "crawl_id" : 30,
+      "crawl_label" : "ユーザ情報修正シナリオ",
       "scan_list" : ["XSS","SQL Injection"]
     }
 

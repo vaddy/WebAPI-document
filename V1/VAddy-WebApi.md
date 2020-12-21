@@ -1,7 +1,7 @@
 VAddy Web API Scan Document
 ======================
 
-Document Version 1.0.2
+Document Version 1.0.3
 
 This specification defines "start scan", "cancel scan" and "get scan results".
 
@@ -154,6 +154,7 @@ Contents:
       "scan_result_url" : "https://console.vaddy.net/scan_status/1/1-837b5f9f-e088-4af5-9491-67f7ce8035a4",
       "complete" : 100,
       "crawl_id" : 30,
+      "crawl_label" : "user edit scenario label",
       "scan_list" : ["XSS","SQL Injection"]
     }
 
