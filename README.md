@@ -20,5 +20,6 @@ VAddy WebAPI document
 
 # Changelog
 
+- [added crawl_label field in scan result response json](https://github.com/vaddy/WebAPI-document/commit/09fd20060c968b3c9dad6fd568240a228e26454c) (2020/12/21)
 - create Crawl Delete Document (2020/6/20)
 - create Scan Result List Document (2020/1/30)
