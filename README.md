@@ -10,7 +10,15 @@ VAddy WebAPI document
 [WebAPI Scan Result List Document(Japanese)](https://github.com/vaddy/WebAPI-document/blob/master/VAddy-WebApi-ScanResultList-ja.md)  
 
 
-# Crawl
+# Crawl Search
 [WebAPI Crawl Document(English)](https://github.com/vaddy/WebAPI-document/blob/master/VAddy-WebApi-Crawl.md)  
 
 [WebAPI Crawl Document(Japanese)](https://github.com/vaddy/WebAPI-document/blob/master/VAddy-WebApi-Crawl-ja.md)  
+
+# Crawl Delete
+[WebAPI Crawl Delete Document(Japanese)](https://github.com/vaddy/WebAPI-document/blob/master/VAddy-WebApi-CrawlDelete-ja.md)  
+
+# Changelog
+
+- create Crawl Delete Document (2020/6/20)
+- create Scan Result List Document (2020/1/30)
