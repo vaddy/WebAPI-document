@@ -21,11 +21,16 @@ Method : POST
     crawl_id=30
     scan_type="SQLI,XSS,RFI,..."
 
-"crawl_id" is optional. If you don't specify it, VAddy uses the latest crawl data for scan. You can see the crawl ID number in the Proxy Crawling page of console page.
+`crawl_id` is optional. If you don't specify it, VAddy uses the latest crawl data for scan. You can see the crawl ID number in the Proxy Crawling page of console page.
 
 `scan_type` is optional. [Scan type list document](https://github.com/vaddy/WebAPI-document/blob/master/VAddy-WebApi-ScanType.md)
 
-The project_id is grouping ID for scan target servers.  It shows on the server menu of VAddy console screen.  
+The `auth_key` is WebAPI authentication key. You can create this key on VAddy management page(https://console.vaddy.net/user/webapi).  
+The `auth_key` can also be specified by `X-API-KEY` in http header.
+
+Set Your UserID(LoginID) of VAddy management page on `user` parameter.  
+
+The `project_id` is grouping ID for scan target servers.  It shows on the server menu of VAddy console screen.  
 
 
 ### Scan Start Response

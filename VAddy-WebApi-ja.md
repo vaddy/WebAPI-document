@@ -20,11 +20,15 @@ Method : POST
     crawl_id=30
     scan_type="SQLI,XSS,RFI,..."
 
-crawl_idはオプション項目です。指定がない場合は最新のクロールデータを利用して検査します。クロールIDの値は、管理画面にログインし、Proxy Crawling画面からご確認ください。
+`crawl_id`はオプション項目です。指定がない場合は最新のクロールデータを利用して検査します。クロールIDの値は、管理画面にログインし、Proxy Crawling画面からご確認ください。
 
 `scan_type` はオプション項目です。指定が無い場合は全ての検査が実行されます。カンマ区切りで指定します。設定できる検査項目の一覧はこちらをご覧ください。 [検査項目指定オプションの一覧](https://github.com/vaddy/WebAPI-document/blob/master/VAddy-WebApi-ScanType.md)
 
-project_idは、検査対象サーバを管理するID。 Server画面にProjectIDとして表示されます。
+`auth_key`は、ユーザ毎に発行する認証キーです。VAddyログイン後のWebAPI管理画面にて取得してください。  
+管理画面のログインIDを`user`パラメータに、API Auth Keyを`auth_key`パラメータにセットしてください。  
+`auth_key` はHTTPヘッダーの `X-API-KEY` に指定することもできます。
+
+`project_id`は、検査対象サーバを管理するID。 Server画面にProjectIDとして表示されます。
 
 ### Scan開始レスポンス
 #### 成功

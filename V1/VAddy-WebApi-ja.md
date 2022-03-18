@@ -1,7 +1,7 @@
 VAddy Web API Scan Document
 ======================
 
-Document Version 1.0.3  
+Document Version 1.0.4  
 
 VAddy WebAPI仕様書です。
 本仕様では、VAddyのスキャン開始、スキャンキャンセル、スキャン結果の取得の3つを定義します。
@@ -22,9 +22,10 @@ Method : POST
 
 crawl_idはオプション項目です。指定がない場合は最新のクロールデータを利用して検査します。クロールIDの値は、管理画面にログインし、Proxy Crawling画面からご確認ください。
 
-auth_keyは、ユーザ毎に発行する認証キーです。VAddyログイン後のWebAPI管理画面にて取得してください。  
-管理画面のUser Idをuserパラメータに、API Auth Keyをauth_keyパラメータにセットしてください。  
 
+`auth_key`は、ユーザ毎に発行する認証キーです。VAddyログイン後のWebAPI管理画面にて取得してください。  
+管理画面のログインIDを`user`パラメータに、API Auth Keyを`auth_key`パラメータにセットしてください。  
+`auth_key` はHTTPヘッダーの `X-API-KEY` に指定することもできます。
 
 ### Scan開始レスポンス
 #### 成功
