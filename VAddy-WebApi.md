@@ -1,7 +1,7 @@
 VAddy Web API Scan Document
 ======================
 
-Document Version 2.0.1
+Document Version 2.0.2
 
 This specification defines "start scan", "cancel scan" and "get scan results".
 
@@ -19,11 +19,11 @@ Method : POST
     auth_key=123456
     project_id=6eb1f9fcbdb6a5a
     crawl_id=30
+    scan_type="SQLI,XSS,RFI,..."
 
 "crawl_id" is optional. If you don't specify it, VAddy uses the latest crawl data for scan. You can see the crawl ID number in the Proxy Crawling page of console page.
 
-The auth_key is WebAPI authentication key. You can create this key on VAddy management page(https://console.vaddy.net/user/webapi).  
-Set Your UserID(LoginID) of VAddy management page on user parameter.  
+`scan_type` is optional. [Scan type list document](https://github.com/vaddy/WebAPI-document/blob/master/VAddy-WebApi-ScanType.md)
 
 The project_id is grouping ID for scan target servers.  It shows on the server menu of VAddy console screen.  
 
