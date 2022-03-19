@@ -1,7 +1,7 @@
 VAddy Web API Crawl Document
 ======================
 
-Document Version 1.0.2
+Document Version 1.0.4
 
 This specification defines to operate crawling information.
 
@@ -30,8 +30,11 @@ Parameters of page, sort, search_label are optional. Each request can fetch at m
 - sort parameter: asc or desc. Default is desc.
 - search_label parameter: Partial-word search. Default is null(search all records).   
 
-The auth_key is WebAPI authentication key. You can get/create this key on VAddy management page(https://console.vaddy.net/user/webapi).  
-Set Your UserID(LoginID) of VAddy management page on the user parameter.
+The `auth_key` is WebAPI authentication key. You can create this key on VAddy management page(https://console.vaddy.net/user/webapi).  
+The `auth_key` can also be specified by `X-API-KEY` in http header.
+
+Set Your UserID(LoginID) of VAddy management page on `user` parameter.  
+
 
 
 

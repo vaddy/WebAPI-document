@@ -1,7 +1,7 @@
 VAddy Web API Crawl Delete Document
 ============================
 
-Document Version 2.0.0  
+Document Version 2.0.1  
 
 VAddy WebAPI クロールデータ削除の仕様書です。
 
@@ -22,10 +22,11 @@ Method : POST
     crawl_id=2
 
 
-auth_keyは、ユーザ毎に発行する認証キーです。VAddyログイン後のWebAPI管理画面にて取得してください。  
-管理画面のUser Idをuserパラメータに、API Auth Keyをauth_keyパラメータにセットしてください。  
+`auth_key`は、ユーザ毎に発行する認証キーです。VAddyログイン後のWebAPI管理画面にて取得してください。  
+管理画面のログインIDを`user`パラメータに、API Auth Keyを`auth_key`パラメータにセットしてください。  
+`auth_key` はHTTPヘッダーの `X-API-KEY` に指定することもできます。
 
-project_numberは、プロジェクト単位で自動付与される数字の番号です。  
+`project_number`は、プロジェクト単位で自動付与される数字の番号です。  
 https://console.vaddy.net/project/123  
 のように各プロジェクト画面のURLの末尾にある数字がproject_numberです。  
 project_idとは異なりますのでご注意ください。  

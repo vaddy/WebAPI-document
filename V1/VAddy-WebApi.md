@@ -1,7 +1,7 @@
 VAddy Web API Scan Document
 ======================
 
-Document Version 1.0.3
+Document Version 1.0.4
 
 This specification defines "start scan", "cancel scan" and "get scan results".
 
@@ -23,8 +23,11 @@ Method : POST
 
 "crawl_id" is optional. If you don't specify it, VAddy uses the latest crawl data for scan. You can see the crawl ID number in the Proxy Crawling page of console page.
 
-The auth_key is WebAPI authentication key. You can create this key on VAddy management page(https://console.vaddy.net/user/webapi).  
-Set Your UserID(LoginID) of VAddy management page on user parameter.
+The `auth_key` is WebAPI authentication key. You can create this key on VAddy management page(https://console.vaddy.net/user/webapi).  
+The `auth_key` can also be specified by `X-API-KEY` in http header.
+
+Set Your UserID(LoginID) of VAddy management page on `user` parameter.  
+
 
 
 

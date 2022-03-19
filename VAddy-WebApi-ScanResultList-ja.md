@@ -1,7 +1,7 @@
 VAddy Web API Scan Result List Document
 ============================
 
-Document Version 2.0.0  
+Document Version 2.0.1  
 
 VAddy WebAPI 検査結果一覧取得の仕様書です。
 
@@ -20,10 +20,12 @@ Method : GET
 
 検索結果は1回で最大20件取得できます。結果は最新順（降順）になります。  
 
-auth_keyは、ユーザ毎に発行する認証キーです。VAddyログイン後のWebAPI管理画面にて取得してください。  
-管理画面のUser Idをuserパラメータに、API Auth Keyをauth_keyパラメータにセットしてください。  
+`auth_key`は、ユーザ毎に発行する認証キーです。VAddyログイン後のWebAPI管理画面にて取得してください。  
+管理画面のログインIDを`user`パラメータに、API Auth Keyを`auth_key`パラメータにセットしてください。  
+`auth_key` はHTTPヘッダーの `X-API-KEY` に指定することもできます。
 
-project_numberは、プロジェクト単位で自動付与される数字の番号です。  
+
+`project_number`は、プロジェクト単位で自動付与される数字の番号です。  
 https://console.vaddy.net/project/123  
 のように各プロジェクト画面のURLの末尾にある数字がproject_numberです。  
 project_idとは異なりますのでご注意ください。  

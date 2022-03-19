@@ -1,7 +1,7 @@
 VAddy Web API Crawl Document
 ============================
 
-Document Version 1.0.2  
+Document Version 1.0.4  
 
 VAddy WebAPI Crawl仕様書です。
 本仕様では、VAddyのクロール情報の取得を定義します。
@@ -29,9 +29,10 @@ page, sort, search_labelはオプション項目です。検索結果は1回で�
 - sortはasc(昇順)もしくはdesc(降順)を指定します。指定しない場合はデフォルトはdescです。
 - search_labelを付けない場合は全てのクロール情報を対象に一覧を取得します。search_labelを付けると、指定のキーワードで部分一致した検索結果を返します。
 
-auth_keyは、ユーザ毎に発行する認証キーです。VAddyログイン後のWebAPI管理画面にて取得してください。  
-管理画面のUser Idをuserパラメータに、API Auth Keyをauth_keyパラメータにセットしてください。  
 
+`auth_key`は、ユーザ毎に発行する認証キーです。VAddyログイン後のWebAPI管理画面にて取得してください。  
+管理画面のログインIDを`user`パラメータに、API Auth Keyを`auth_key`パラメータにセットしてください。  
+`auth_key` はHTTPヘッダーの `X-API-KEY` に指定することもできます。
 
 #### リクエスト例 (最新の30件を取得)：
 
