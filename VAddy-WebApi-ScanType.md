@@ -25,3 +25,18 @@ WebAPIから検査項目で指定できる項目は次の通りです。カン�
 | BUFFER_OVERFLOW    | バッファオーバーフロー              | 検査追加オプション          |
 | SESSION_FIXATION   | セッション管理不備                 | 検査追加オプション          |
 | ACCESS_CTL         | アクセス・認可制御不備              | 検査追加オプション          |
+
+## Scan type list for each plan
+WebAPIやgo-vaddyツールで指定する際に、次のプラン毎の検査項目をコピーして調整してご利用ください。
+
+### Enterprise Plan
+SQLI,BLIND_SQLI,XSS,XSS_STORE,RFI,COMMAND_INJECTION,PATH_TRAV,HEADER_INJECTION,XXE,DESERIALIZATION,SSRF,PRIVATE_FILE
+
+### Professional Plan
+SQLI,XSS,XSS_STORE,RFI,COMMAND_INJECTION,PATH_TRAV
+
+### Starter Plan 
+SQLI,XSS,XSS_STORE
+
+### 検査項目追加オプション
+MAIL_HEADER,CLICK_JACKING,BUFFER_OVERFLOW,SESSION_FIXATION,ACCESS_CTL
